@@ -418,7 +418,122 @@
   .corner-tl { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
   .corner-br { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
 
-  .about-avatar-placeholder {
+  /* ─── PHOTO LIGHTNING FRAME ─── */
+  .photo-lightning-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .lightning-border {
+    position: absolute;
+    inset: -6px;
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Moving glowing line around the border — top→right→bottom→left */
+  .lb1::before {
+    content: '';
+    position: absolute;
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, transparent, #00FFC2, transparent);
+    box-shadow: 0 0 12px #00FFC2, 0 0 24px #00FFC2;
+    border-radius: 4px;
+    animation: border-race-top 2.4s linear infinite;
+    top: 0; left: -60px;
+  }
+  .lb1::after {
+    content: '';
+    position: absolute;
+    width: 3px; height: 60px;
+    background: linear-gradient(180deg, transparent, #00FFC2, transparent);
+    box-shadow: 0 0 12px #00FFC2, 0 0 24px #00FFC2;
+    border-radius: 4px;
+    animation: border-race-right 2.4s linear infinite;
+    right: 0; top: -60px;
+  }
+
+  .lb2::before {
+    content: '';
+    position: absolute;
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, transparent, #8B5CF6, transparent);
+    box-shadow: 0 0 12px #8B5CF6, 0 0 24px #8B5CF6;
+    border-radius: 4px;
+    animation: border-race-bottom 2.4s linear infinite;
+    bottom: 0; right: -60px;
+    animation-delay: 1.2s;
+  }
+  .lb2::after {
+    content: '';
+    position: absolute;
+    width: 3px; height: 60px;
+    background: linear-gradient(180deg, transparent, #8B5CF6, transparent);
+    box-shadow: 0 0 12px #8B5CF6, 0 0 24px #8B5CF6;
+    border-radius: 4px;
+    animation: border-race-left 2.4s linear infinite;
+    left: 0; bottom: -60px;
+    animation-delay: 1.2s;
+  }
+
+  .lb3::before {
+    content: '';
+    position: absolute;
+    width: 50px; height: 3px;
+    background: linear-gradient(90deg, transparent, #06D6FA, transparent);
+    box-shadow: 0 0 10px #06D6FA, 0 0 20px #06D6FA;
+    border-radius: 4px;
+    animation: border-race-top 2.4s linear infinite;
+    top: 0; left: -50px;
+    animation-delay: 0.6s;
+  }
+  .lb3::after {
+    content: '';
+    position: absolute;
+    width: 3px; height: 50px;
+    background: linear-gradient(180deg, transparent, #FF003C, transparent);
+    box-shadow: 0 0 10px #FF003C, 0 0 20px #FF003C;
+    border-radius: 4px;
+    animation: border-race-left 2.4s linear infinite;
+    left: 0; bottom: -50px;
+    animation-delay: 1.8s;
+  }
+
+  @keyframes border-race-top {
+    0%   { left: -60px; }
+    100% { left: calc(100% + 60px); }
+  }
+  @keyframes border-race-right {
+    0%   { top: -60px; }
+    100% { top: calc(100% + 60px); }
+  }
+  @keyframes border-race-bottom {
+    0%   { right: -60px; }
+    100% { right: calc(100% + 60px); }
+  }
+  @keyframes border-race-left {
+    0%   { bottom: -60px; }
+    100% { bottom: calc(100% + 60px); }
+  }
+
+  .photo-name-tag {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: var(--teal);
+    text-shadow: 0 0 12px rgba(0,255,194,0.5);
+    text-align: center;
+    padding: 8px 16px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass);
+    position: relative;
+    z-index: 3;
+  }
     width: 100%; height: 100%;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
@@ -1257,18 +1372,23 @@
 <section id="about">
   <div class="inner reveal">
     <div class="about-visual">
-      <div class="about-frame">
-        <div class="scan-line"></div>
-        <div class="corner-tl"></div>
-        <div class="corner-br"></div>
-        <div class="about-avatar-placeholder">
-          <div class="avatar-icon">⬡</div>
-          <span style="font-size:0.6rem;color:var(--teal);letter-spacing:0.3em;">OLANREWAJU GBOLAHAN</span>
-<div class="photo-container" style="margin-top: 15px;">
-    <img src="your-actual-image-name.jpg" alt="Mycha" style="width: 80%; border: 1px solid var(--teal); padding: 5px;">
-</div>
-          <span style="font-size:0.55rem;color:var(--dim);">PLACE YOUR PHOTO HERE</span>
+      <div class="photo-lightning-wrap">
+        <!-- Lightning border layers -->
+        <div class="lightning-border lb1"></div>
+        <div class="lightning-border lb2"></div>
+        <div class="lightning-border lb3"></div>
+        <div class="about-frame">
+          <div class="scan-line"></div>
+          <!-- ✅ Replace photo.jpg with your actual image filename -->
+          <img src="photo.jpg" alt="Olanrewaju Gbolahan"
+               onerror="this.style.display='none';document.getElementById('ph-fallback').style.display='flex';"
+               style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div id="ph-fallback" class="about-avatar-placeholder" style="display:none">
+            <div class="avatar-icon">⬡</div>
+            <span style="font-size:0.55rem;color:var(--dim);letter-spacing:0.2em;">Place photo.jpg here</span>
+          </div>
         </div>
+        <div class="photo-name-tag">OLANREWAJU GBOLAHAN</div>
       </div>
     </div>
     <div class="about-text">
