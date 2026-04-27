@@ -969,7 +969,7 @@ function speakWelcome(){
   if(!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
   const utter = new SpeechSynthesisUtterance('Welcome, to my portfolio');
-  utter.rate = 0.95; utter.pitch = 1.1; utter.volume = 1;
+  utter.rate = 1.05; utter.pitch = 1.1; utter.volume = 1;
   utter.onend = () => { muteSound(); };
   function setVoice(){
     const voices = window.speechSynthesis.getVoices();
