@@ -39,7 +39,7 @@ A high-performance, cyber-themed personal portfolio website for **Olanrewaju Gbo
 * **Tech:** JavaScript, Game Dev, HTML5 Canvas
 * **Link:** [Launch Project](https://gbollzgee.github.io/MYCHA_GAME/)
 
-### 2. **DANMOS PRIVATE-VAULT** (`PROJECT_002`)
+### 2. **MYCHA PRIVATE-VAULT** (`PROJECT_002`)
 * A secure, high-performance digital repository designed for encrypted data management and seamless access control.
 * **Tech:** Web Design, HTML/CSS, Corporate Design
 * **Link:** [Launch Project](https://gbollzgee.github.io/vault-storage/)
@@ -79,7 +79,7 @@ A high-performance, cyber-themed personal portfolio website for **Olanrewaju Gbo
 * **WhatsApp:** [Message Direct](https://wa.me/2349064110521)
 * **X / Twitter:** [@Mychaleo](https://twitter.com/Mychaleo)
 * **Instagram:** [@mycha.001](https://www.instagram.com/mycha.001)
-* **TikTok:** [@king_mitchy_blog](https://www.tiktok.com/@king_mitchy_blog)
+* **TikTok:** [@Mycha0110](https://www.tiktok.com/@mycha0110?_r=1&_t=ZS-98FEQVmtfV3)
 * **Facebook:** [Mycha Lee](https://www.facebook.com/mycha.lee.5621)
 
 ---
